@@ -22,6 +22,8 @@ app.listen(port, async () => {
   console.log(
     `The server is up and running at ${port} in ${process.env.NODE_ENV} mode`
   );
+  dotenv.config();
+  console.log(`Configured environment variables`);
   scheduler();
   console.log("Started the scheduler job");
 });
