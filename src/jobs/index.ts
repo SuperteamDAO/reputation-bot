@@ -1,10 +1,9 @@
 import schedule from "node-schedule";
 
-import { fetchGithubIssues } from "@/services";
+import { githubIssuesService, githubCommitsService } from "@/services";
 import { GITHUB_JOB_CRON_EXPRESSION } from "@/constants";
-import { fetchGithubCommitSummary } from "@/services/fetch-github-commits";
 
 export const scheduler = async () => {
-  schedule.scheduleJob(GITHUB_JOB_CRON_EXPRESSION, fetchGithubIssues);
-  schedule.scheduleJob(GITHUB_JOB_CRON_EXPRESSION, fetchGithubCommitSummary);
+  schedule.scheduleJob(GITHUB_JOB_CRON_EXPRESSION, githubIssuesService);
+  schedule.scheduleJob(GITHUB_JOB_CRON_EXPRESSION, githubCommitsService);
 };

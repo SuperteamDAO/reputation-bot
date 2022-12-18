@@ -1,1 +1,2 @@
-export * from "./fetch-github-issues";
+export * from "./issues";
+export * from "./commits";
