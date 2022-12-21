@@ -30,8 +30,6 @@ export const githubCommitsService = async () => {
         totalCommits = totalCommits + repositoryCommitSummary.commits.length;
       }
 
-      console.log(JSON.stringify(topComitters, null, 2));
-
       const message = `**Total commits today**: ${totalCommits}
 
         **Top comitters today**: ${generateMessageForTopCommitters(

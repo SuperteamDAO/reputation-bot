@@ -1,6 +1,6 @@
 import { airtable, sendToDiscord } from "@/helpers";
 import { generateMessageForLatestIssues } from "@/utils";
-import { fetchLatestIssues } from "@/lib/latest-issues";
+import { fetchLatestIssues } from "@/lib";
 
 export const githubIssuesService = async () => {
   const projects = airtable("Projects").select({
