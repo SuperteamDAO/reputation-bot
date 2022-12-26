@@ -28,14 +28,16 @@ export const aggregateIssues = async () => {
         `;
     }
 
-    await sendToDiscord(process.env.DISCORD_WEBHOOK_URL!, {
-      embeds: [
-        {
-          title: "Glass",
-          description: message,
-          color: parseInt("#5865F2".replace("#", ""), 16),
-        },
-      ],
-    });
+    if (issues.length > 0) {
+      await sendToDiscord(process.env.DISCORD_WEBHOOK_URL!, {
+        embeds: [
+          {
+            title: "Glass",
+            description: message,
+            color: parseInt("#5865F2".replace("#", ""), 16),
+          },
+        ],
+      });
+    }
   });
 };
