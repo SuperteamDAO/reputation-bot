@@ -32,7 +32,7 @@ export const githubIssuesService = async () => {
       **Issues opened today**: ${generateMessageForLatestIssues(latestIssues)}
       `;
 
-      if (totalIssues > 0) {
+      if (latestIssues.length > 0) {
         await sendToDiscord(webhook, {
           embeds: [
             {
