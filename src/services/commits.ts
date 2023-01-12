@@ -3,8 +3,8 @@ import { fetchCommitSummary } from "@/lib";
 import { generateMessageForTopCommitters } from "@/utils";
 
 export const githubCommitsService = async () => {
-  const projects = airtable("Projects").select({
-    view: "All Projects",
+  const projects = airtable("All Projects").select({
+    view: "Grid view",
   });
 
   projects.firstPage((_error, records) => {
