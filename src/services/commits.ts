@@ -37,15 +37,17 @@ export const githubCommitsService = async () => {
         )}
         `;
 
-      await sendToDiscord(webhook, {
-        embeds: [
-          {
-            title: project,
-            description: message,
-            color: parseInt("#5865F2".replace("#", ""), 16),
-          },
-        ],
-      });
+      if (totalCommits > 0) {
+        await sendToDiscord(webhook, {
+          embeds: [
+            {
+              title: project,
+              description: message,
+              color: parseInt("#5865F2".replace("#", ""), 16),
+            },
+          ],
+        });
+      }
     });
   });
 };

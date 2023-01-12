@@ -32,15 +32,17 @@ export const githubIssuesService = async () => {
       **Issues opened today**: ${generateMessageForLatestIssues(latestIssues)}
       `;
 
-      await sendToDiscord(webhook, {
-        embeds: [
-          {
-            title: project,
-            description: message,
-            color: parseInt("#5865F2".replace("#", ""), 16),
-          },
-        ],
-      });
+      if (latestIssues.length > 0) {
+        await sendToDiscord(webhook, {
+          embeds: [
+            {
+              title: project,
+              description: message,
+              color: parseInt("#5865F2".replace("#", ""), 16),
+            },
+          ],
+        });
+      }
     });
   });
 };
