@@ -6,8 +6,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const aggregateIssues = async () => {
-  const projects = airtable("Projects").select({
-    view: "All Projects",
+  const projects = airtable("All Projects").select({
+    view: "Grid view",
   });
 
   projects.firstPage(async (_error, records) => {
@@ -16,6 +16,10 @@ export const aggregateIssues = async () => {
 
     for (const record of records!) {
       const repository = record.get("github_repositories") as string;
+
+      if (!repository) {
+        continue;
+      }
 
       for (const repo of repository.split(",")) {
         const repositoryLatestIssues = await fetchLatestIssues(repo);
