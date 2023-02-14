@@ -2,7 +2,7 @@
   "name": "github-webhook",
   "scripts": {
     "watch": "tsup --watch",
-    "dev": "cross-env NODE_ENV=development nodemon dist/index.js",
+    "dev": "npm run build && cross-env NODE_ENV=development node dist/index.js",
     "build": "tsup",
     "start": "npm run build && cross-env NODE_ENV=production node dist/index.js"
   },

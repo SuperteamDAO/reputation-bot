@@ -14,7 +14,7 @@ export const githubCommitsService = async () => {
       const webhook = record.get("discord_url") as string;
       const oss = record.get("oss");
 
-      if (!webhook || !oss) {
+      if (!webhook || !oss || !repository) {
         return;
       }
 

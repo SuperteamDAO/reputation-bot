@@ -3,8 +3,8 @@ import { generateMessageForLatestIssues } from "@/utils";
 import { fetchLatestIssues } from "@/lib";
 
 export const githubIssuesService = async () => {
-  const projects = airtable("Projects").select({
-    view: "All Projects",
+  const projects = airtable("All Projects").select({
+    view: "Grid view",
   });
 
   projects.firstPage((_error, records) => {
@@ -14,7 +14,7 @@ export const githubIssuesService = async () => {
       const webhook = record.get("discord_url") as string;
       const oss = record.get("oss");
 
-      if (!webhook || !oss) {
+      if (!webhook || !oss || !repository) {
         return;
       }
 
